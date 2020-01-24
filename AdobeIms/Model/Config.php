@@ -8,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\AdobeIms\Model;
 
+use Magento\Framework\UrlInterface;
 use Magento\AdobeImsApi\Api\ConfigInterface;
 use Magento\Config\Model\Config\Backend\Admin\Custom;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\UrlInterface;
 
 /**
  * Represent the Adobe IMS config model responsible for retrieving config settings for Adobe Ims
@@ -25,6 +25,7 @@ class Config implements ConfigInterface
     private const XML_PATH_LOGOUT_URL_PATTERN = 'adobe_ims/integration/logout_url';
     private const XML_PATH_DEFAULT_PROFILE_IMAGE = 'adobe_ims/integration/default_profile_image';
     private const XML_PATH_IMAGE_URL_PATTERN = 'adobe_ims/integration/image_url';
+    private const OAUTH_CALLBACK_URL = 'adobe_ims/oauth/callback';
 
     /**
      * @var ScopeConfigInterface
@@ -91,7 +92,7 @@ class Config implements ConfigInterface
      */
     public function getCallBackUrl(): string
     {
-        return $this->url->getUrl('adobe_ims/oauth/callback');
+        return $this->url->getUrl(self::OAUTH_CALLBACK_URL);
     }
 
     /**
