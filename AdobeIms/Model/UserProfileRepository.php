@@ -21,7 +21,6 @@ use Magento\AdobeImsApi\Api\Data\UserProfileInterfaceFactory;
  */
 class UserProfileRepository implements UserProfileRepositoryInterface
 {
-    private const ID = 'id';
     private const ADMIN_USER_ID = 'admin_user_id';
 
     /**
@@ -89,9 +88,9 @@ class UserProfileRepository implements UserProfileRepositoryInterface
         }
 
         $entity = $this->entityFactory->create();
-        $this->resource->load($entity, $entityId, self::ID);
+        $this->resource->load($entity, $entityId, 'id');
         if (!$entity->getId()) {
-            $message = __('User profile with id %id not found.', [self::ID => $entityId]);
+            $message = __('User profile with id %id not found.', ['id' => $entityId]);
             throw new NoSuchEntityException($message);
         }
 
@@ -106,7 +105,7 @@ class UserProfileRepository implements UserProfileRepositoryInterface
         $entity = $this->entityFactory->create();
         $this->resource->load($entity, $userId, self::ADMIN_USER_ID);
         if (!$entity->getId()) {
-            $message = __('User profile with user id %id not found.', [self::ID => $userId]);
+            $message = __('User profile with user id %id not found.', ['id' => $userId]);
             throw new NoSuchEntityException($message);
         }
 
