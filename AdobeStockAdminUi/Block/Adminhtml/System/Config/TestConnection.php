@@ -19,7 +19,7 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
  */
 class TestConnection extends Field
 {
-    private const XML_PATH_TEST_CONNECTION = 'adobe_stock/system_config/testconnection';
+    private const TEST_CONNECTION_PATH = 'adobe_stock/system_config/testconnection';
 
     /**
      * @inheritdoc
@@ -106,7 +106,7 @@ class TestConnection extends Field
     public function getAjaxUrl(): string
     {
         return $this->_urlBuilder->getUrl(
-            self::XML_PATH_TEST_CONNECTION,
+            self::TEST_CONNECTION_PATH,
             [
                 'form_key' => $this->getFormKey(),
             ]
